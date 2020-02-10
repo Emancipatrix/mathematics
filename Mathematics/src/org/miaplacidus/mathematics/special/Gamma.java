@@ -29,7 +29,7 @@ import org.miaplacidus.mathematics.number.complex.Complex;
 
 /**
  *
- * @author Miaplacidus d'Orléans <miaplacidus.d.orleans@gmail.com>
+ * @author Miaplacidus
  */
 public class Gamma extends Object{
     private static final double LANCZOS_APPROXIMATION_G=4.7421875;

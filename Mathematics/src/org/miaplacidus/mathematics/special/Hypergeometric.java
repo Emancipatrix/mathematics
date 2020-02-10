@@ -21,34 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.miaplacidus.mathematics.number;
+package org.miaplacidus.mathematics.special;
+
+import java.util.logging.Logger;
+import org.miaplacidus.mathematics.number.complex.Complex;
 
 /**
  *
  * @author Miaplacidus
- * @param <N>
  */
-public interface Arithmetic<N> {
-    /**
-     * Addition.
-     * @param addend
-     * @return 
-     */
-    public N add(final N addend);
+public class Hypergeometric {
     
-    /**
-     * Subtraction.
-     * @param subtrahend
-     * @return 
-     */
-    public N subtract(final N subtrahend);
+    private static final Logger LOG = Logger.getLogger(Hypergeometric.class.getName());
     
-    /**
-     * Multiplication.
-     * @param multiplicand
-     * @return 
-     */
-    public N multiply(final N multiplicand);
+    public static Complex hypergeometric(Complex a, Complex b, Complex c, Complex z, short precision) {
+        Complex result = Gamma.gamma(c).divide(Gamma.gamma(a)).divide(Gamma.gamma(b));
+        Complex tempMultiplier=Complex.ZERO;
+        for (short s = 0; s < precision; s++) {
+            Complex temp = Gamma.gamma(a.add(s)).multiply(Gamma.gamma(b.add(s))).divide(Gamma.gamma(c.add(s))).divide(factorial(s)).multiply(z.exponentiate(s));
+            tempMultiplier = tempMultiplier.add(temp);
+        }
+        return result.multiply(tempMultiplier);
+    }
     
-    public N divide(final N divisor);
+
+    public static long factorial(long number) {
+        long result = 1;
+        for (int factor = 2; factor <= number; factor++) {
+            result *= factor;
+        }
+        return result;
+    }
 }

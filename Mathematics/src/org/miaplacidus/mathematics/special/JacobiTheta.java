@@ -21,34 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.miaplacidus.mathematics.number;
+package org.miaplacidus.mathematics.special;
+
+import java.util.logging.Logger;
+import org.miaplacidus.mathematics.number.complex.Complex;
 
 /**
  *
  * @author Miaplacidus
- * @param <N>
  */
-public interface Arithmetic<N> {
-    /**
-     * Addition.
-     * @param addend
-     * @return 
-     */
-    public N add(final N addend);
+public class JacobiTheta {
     
-    /**
-     * Subtraction.
-     * @param subtrahend
-     * @return 
-     */
-    public N subtract(final N subtrahend);
+    private static final Logger LOG = Logger.getLogger(JacobiTheta.class.getName());
     
-    /**
-     * Multiplication.
-     * @param multiplicand
-     * @return 
-     */
-    public N multiply(final N multiplicand);
     
-    public N divide(final N divisor);
+    
+    
+    public static Complex theta1(Complex z, Complex tau, long fourierSeriesPrecision) {
+        final Complex q=Complex.I.multiply(Math.PI).multiply(tau);
+        Complex result = Complex.ZERO;
+        
+        for (long n = 0; n < fourierSeriesPrecision; n++) {
+            Complex addend = Complex.ONE.negate().exponentiate(n)
+                    .multiply(q.exponentiate(new Complex(n + 1 / 2).exponentiate(2)))
+                    .multiply(z.multiply(2 * n + 1).sin());
+            result = result.add(addend);
+        }
+        return result;        
+    }
 }

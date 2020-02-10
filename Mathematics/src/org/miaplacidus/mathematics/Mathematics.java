@@ -27,10 +27,13 @@ import java.util.logging.Logger;
 
 /**
  * A Java Library for Mathematics.
- * @author Miaplacidus d'Orléans <miaplacidus.d.orleans@gmail.com>
+ * @author Miaplacidus
  */
-public abstract class Mathematics extends Object{
+public class Mathematics extends Object{
     private static final Logger LOG = Logger.getLogger(Mathematics.class.getName());
+     
+    public static void main(String[] args) {
+    }
     
     private Mathematics() {
         throw new AssertionError();

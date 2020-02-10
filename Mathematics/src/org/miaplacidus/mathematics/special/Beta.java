@@ -25,7 +25,7 @@ package org.miaplacidus.mathematics.special;
 
 /**
  * 
- * @author Miaplacidus d'Orléans <miaplacidus.d.orleans@gmail.com>
+ * @author Miaplacidus
  */
 public class Beta {
     

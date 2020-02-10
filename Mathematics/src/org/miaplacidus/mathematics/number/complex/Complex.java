@@ -31,7 +31,7 @@ import org.miaplacidus.mathematics.number.Arithmetic;
 
 /**
  * Representation of a complex number, id est a number with both a real part and an imaginary part.
- * @author Miaplacidus d'Orléans <miaplacidus.d.orleans@gmail.com>
+ * @author Miaplacidus
  */
 public class Complex extends Object implements Serializable, Arithmetic<Complex> {
     /**
@@ -159,7 +159,7 @@ public class Complex extends Object implements Serializable, Arithmetic<Complex>
         } else if (this.infinite()) {
             return "infinity";
         } else {
-            if (this.imaginary == 0) {
+            /*if (this.imaginary == 0) {
                 return this.real + "";
             } else if (this.real == 0) {
                 return this.imaginary + "i";
@@ -167,7 +167,7 @@ public class Complex extends Object implements Serializable, Arithmetic<Complex>
                 return this.real + "+" + this.imaginary + "i";
             } else {
                 return this.real + this.imaginary + "i";
-            }
+            }*/return "(" + real + ", " + imaginary + ")";
         }
     }  
     
@@ -418,7 +418,7 @@ public class Complex extends Object implements Serializable, Arithmetic<Complex>
      * @return the exponential of this complex number.
      */
     public Complex exponentiate(){
-        return new Complex(Math.exp(this.real) * Math.cos(this.imaginary), Math.exp(this.real) * Math.sin(this.imaginary));
+        return new Complex(Math.cos(this.imaginary), Math.sin(this.imaginary)).multiply(Math.exp(this.real));
     }
     
     /**
@@ -491,7 +491,7 @@ public class Complex extends Object implements Serializable, Arithmetic<Complex>
      * @return the natural logarithm of this complex number.
      */
     public Complex logarithm() {
-        return new Complex(Math.log(Math.hypot(this.real, this.imaginary)), Math.atan2(this.imaginary, this.real));   
+        return new Complex(Math.log(Math.hypot(this.real, this.imaginary)), Math.atan2(this.imaginary, this.real));
     } 
     
     

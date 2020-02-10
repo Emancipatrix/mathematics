@@ -21,34 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.miaplacidus.mathematics.number;
+package org.miaplacidus.mathematics.special;
 
 /**
  *
  * @author Miaplacidus
- * @param <N>
  */
-public interface Arithmetic<N> {
-    /**
-     * Addition.
-     * @param addend
-     * @return 
-     */
-    public N add(final N addend);
+public class GeneralisedHypergeometric {
     
-    /**
-     * Subtraction.
-     * @param subtrahend
-     * @return 
-     */
-    public N subtract(final N subtrahend);
-    
-    /**
-     * Multiplication.
-     * @param multiplicand
-     * @return 
-     */
-    public N multiply(final N multiplicand);
-    
-    public N divide(final N divisor);
 }

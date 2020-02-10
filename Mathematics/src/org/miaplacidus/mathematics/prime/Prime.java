@@ -30,10 +30,23 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Miaplacidus d'Orléans <miaplacidus.d.orleans@gmail.com>
+ * @author Miaplacidus
  */
 public class Prime extends Object {
-    private static final Logger LOG = Logger.getLogger(Prime.class.getName());
+    private static final Logger LOG = Logger.getLogger(Prime.class.getName());   
+    
+    private static final long[] STRONG_PSEUDOPRIMES = new long[]{
+        2047, 1373653, 25326001, 3215031751L, 2152302898747L, 3474749660383L,
+        341550071728321L, 3825123056546413051L
+    };
+    
+    private static final int[] NTH_PRIMES_FOR_PSEUDOPRIMALITY = {
+        1, 2, 3, 4, 5, 6, 7, 9, 12
+    };
+    
+    private static final short[] PRIMALITY_TEST_BASES = {
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37
+    };
     
     /**
      * The method utilises the deterministic variants of the Miller–Rabin primality test
@@ -51,17 +64,7 @@ public class Prime extends Object {
                 }
             }
             
-            final short bases[];
-            if (number >= STRONG_PSEUDOPRIMES[STRONG_PSEUDOPRIMES.length - 1]) {
-                bases = PRIMALITY_TEST_BASES;
-            } else {
-                for (short i = 0; i < STRONG_PSEUDOPRIMES.length; i++) {
-                    if (number < STRONG_PSEUDOPRIMES[i]) {
-                        bases = Arrays.copyOf(PRIMALITY_TEST_BASES,NTH_PRIMES_FOR_PSEUDOPRIMALITY[i]);
-                        break;
-                    }
-                }
-            }
+            final short bases[] = primalityTestBase(number);
             
             final BigInteger n = BigInteger.valueOf(number);
             
@@ -70,32 +73,21 @@ public class Prime extends Object {
             final long r = d >> s;
             
             for (short a : bases) {
-                throw new UnsupportedOperationException();
+                
             }
+            
+            throw new UnsupportedOperationException();
         }
     }
     
-    private static final long[] STRONG_PSEUDOPRIMES = new long[]{
-        2047, 1373653, 25326001, 3215031751L, 2152302898747L, 3474749660383L,
-        341550071728321L, 3825123056546413051L
-    };
-    
-    private static final int[] NTH_PRIMES_FOR_PSEUDOPRIMALITY = {
-        1, 2, 3, 4, 5, 6, 7, 9, 12
-    };
-    
-    private static final short[] PRIMALITY_TEST_BASES = {
-        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37
-    };
-    
-    /*public static short[] primalityTestBase(final long oddNumber) {
+    private static short[] primalityTestBase(final long oddNumber) {
         for (short i = 0; i < STRONG_PSEUDOPRIMES.length; i++) {
             if (oddNumber < STRONG_PSEUDOPRIMES[i]) {
                 return Arrays.copyOf(PRIMALITY_TEST_BASES,NTH_PRIMES_FOR_PSEUDOPRIMALITY[i]);
             }
         }
         return Arrays.copyOf(PRIMALITY_TEST_BASES,PRIMALITY_TEST_BASES.length);
-    }*/
+    }
     
     public static long nextPrime(long number) {
         throw new UnsupportedOperationException();

@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 
 /**
  * The utility class for the Complex.java class.
- * @author Miaplacidus d'Orléans <miaplacidus.d.orleans@gmail.com>
+ * @author Miaplacidus
  */
 public class ComplexUtility extends Object{
     private static final Logger LOG = Logger.getLogger(ComplexUtility.class.getName());
